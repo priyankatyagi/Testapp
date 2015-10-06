@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +30,8 @@ import java.io.OutputStream;
 public class Profile extends ActionBarActivity {
 ImageView picture;
 TextView textview;
+Button Submit,Cancel;
+EditText address1,address2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +39,47 @@ TextView textview;
 
        picture=(ImageView)findViewById(R.id.profilepic);
         textview=(TextView)findViewById(R.id.textView);
+        address1=(EditText)findViewById(R.id.editText);
+        address2=(EditText)findViewById(R.id.address2);
+        Submit=(Button)findViewById(R.id.btSubmit);
+        Cancel=(Button)findViewById(R.id.btCancel);
+
 
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectImage();
+            }
+        });
+
+        Submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+               SharedData.writeString(getApplicationContext(),
+                       SharedData.ADDRESS1, address1.getText().toString());
+                SharedData.writeString(getApplicationContext(),
+                        SharedData.ADDRESS2, address2.getText().toString());
+               /* SharedData.writeString(getApplicationContext(),
+                        SharedData.EMAIL,email.getText().toString());
+                SharedData.writeString(getApplicationContext(),
+                        SharedData.PASSWORD,password.getText().toString());*/
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+
+            }});
+
+        Cancel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+               /* SharedData.writeString(getApplicationContext(),
+                        SharedData.FNAME,fname.getText().toString());
+                SharedData.writeString(getApplicationContext(),
+                        SharedData.LNAME,lname.getText().toString());
+                SharedData.writeString(getApplicationContext(),
+                        SharedData.EMAIL,email.getText().toString());
+                SharedData.writeString(getApplicationContext(),
+                        SharedData.PASSWORD,password.getText().toString());*/
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+
             }
         });
     }
@@ -133,6 +173,7 @@ TextView textview;
             }
         }
     }
+
 }
 
 

@@ -14,9 +14,11 @@ public class SharedData {
 
 
     public static final String USER_NAME = "USER_NAME";
-
+    public static final String USER_ID = "USER_ID";
     public static final String FNAME = "FNAME";
     public static final String LNAME = "LNAME";
+    public static final String ADDRESS1 = "ADDRESS1";
+    public static final String ADDRESS2 = "ADDRESS2";
 
     public static final String EMAIL = "EMAIL";
     public static final String PASSWORD = "PASSWORD";
